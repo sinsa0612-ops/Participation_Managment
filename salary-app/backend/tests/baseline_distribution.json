@@ -1,0 +1,1109 @@
+[
+  {
+    "project_id": "p1",
+    "member_id": "m1",
+    "role": "연구책임자",
+    "start_date": "2025-01-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 7200000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m1",
+    "role": "연구책임자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-06-30",
+    "rate": 29.1,
+    "cost": 10475000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m10",
+    "role": "일반참여자",
+    "start_date": "2025-01-01",
+    "end_date": "2026-06-30",
+    "rate": 10.0,
+    "cost": 4500000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m2",
+    "role": "일반참여자",
+    "start_date": "2025-01-01",
+    "end_date": "2025-02-28",
+    "rate": 100.0,
+    "cost": 10000000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m2",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-06-30",
+    "rate": 10.0,
+    "cost": 1500000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m2",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31",
+    "rate": 80.0,
+    "cost": 4000000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m2",
+    "role": "일반참여자",
+    "start_date": "2026-04-01",
+    "end_date": "2026-06-30",
+    "rate": 90.0,
+    "cost": 13500000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m3",
+    "role": "실무자",
+    "start_date": "2025-01-01",
+    "end_date": "2025-06-30",
+    "rate": 60.0,
+    "cost": 16200000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m3",
+    "role": "실무자",
+    "start_date": "2025-07-01",
+    "end_date": "2026-03-31",
+    "rate": 10.0,
+    "cost": 4050000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m3",
+    "role": "실무자",
+    "start_date": "2026-04-01",
+    "end_date": "2026-06-30",
+    "rate": 70.0,
+    "cost": 9450000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m4",
+    "role": "일반참여자",
+    "start_date": "2025-01-01",
+    "end_date": "2025-02-28",
+    "rate": 100.0,
+    "cost": 8000000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m4",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-31",
+    "rate": 20.0,
+    "cost": 800000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m4",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-05-31",
+    "rate": 10.0,
+    "cost": 800000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m4",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31",
+    "rate": 70.0,
+    "cost": 2800000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m4",
+    "role": "일반참여자",
+    "start_date": "2026-04-01",
+    "end_date": "2026-06-30",
+    "rate": 80.0,
+    "cost": 9600000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2025-01-01",
+    "end_date": "2025-02-28",
+    "rate": 100.0,
+    "cost": 7000000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-31",
+    "rate": 90.0,
+    "cost": 3150000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-05-31",
+    "rate": 57.93,
+    "cost": 4055000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-30",
+    "rate": 47.91,
+    "cost": 1676000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2025-12-31",
+    "rate": 37.94,
+    "cost": 7967000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-02-28",
+    "rate": 59.5,
+    "cost": 4165000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-06-30",
+    "rate": 10.0,
+    "cost": 1400000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m6",
+    "role": "일반참여자",
+    "start_date": "2025-01-01",
+    "end_date": "2025-06-30",
+    "rate": 30.0,
+    "cost": 5760000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m6",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-06-30",
+    "rate": 10.0,
+    "cost": 1280000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2025-01-01",
+    "end_date": "2025-02-28",
+    "rate": 100.0,
+    "cost": 6000000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-31",
+    "rate": 90.0,
+    "cost": 2700000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-06-30",
+    "rate": 80.0,
+    "cost": 7200000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2025-08-31",
+    "rate": 70.0,
+    "cost": 4200000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2025-09-01",
+    "end_date": "2025-12-31",
+    "rate": 60.0,
+    "cost": 7200000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-06-30",
+    "rate": 10.0,
+    "cost": 1800000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-01-01",
+    "end_date": "2025-02-28",
+    "rate": 100.0,
+    "cost": 5600000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-31",
+    "rate": 90.0,
+    "cost": 2520000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-06-30",
+    "rate": 69.55,
+    "cost": 5842000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2026-06-30",
+    "rate": 10.0,
+    "cost": 3360000.0
+  },
+  {
+    "project_id": "p1",
+    "member_id": "m9",
+    "role": "일반참여자",
+    "start_date": "2025-01-01",
+    "end_date": "2025-09-30",
+    "rate": 10.0,
+    "cost": 2250000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-31",
+    "rate": 90.0,
+    "cost": 5400000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-05-31",
+    "rate": 63.75,
+    "cost": 7650000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2025-06-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 4200000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-02-28",
+    "rate": 30.83,
+    "cost": 3700000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m10",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2026-02-28",
+    "rate": 10.0,
+    "cost": 3000000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m2",
+    "role": "연구책임자",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-31",
+    "rate": 100.0,
+    "cost": 5000000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m2",
+    "role": "연구책임자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 4500000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m2",
+    "role": "연구책임자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-02-28",
+    "rate": 90.0,
+    "cost": 9000000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m3",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2026-02-28",
+    "rate": 10.0,
+    "cost": 5400000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m4",
+    "role": "실무자",
+    "start_date": "2025-03-01",
+    "end_date": "2026-02-28",
+    "rate": 80.0,
+    "cost": 38400000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2026-02-28",
+    "rate": 10.0,
+    "cost": 4200000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m6",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2026-02-28",
+    "rate": 10.0,
+    "cost": 3840000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2026-02-28",
+    "rate": 10.0,
+    "cost": 3600000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2026-02-28",
+    "rate": 10.0,
+    "cost": 3360000.0
+  },
+  {
+    "project_id": "p2",
+    "member_id": "m9",
+    "role": "일반참여자",
+    "start_date": "2025-03-01",
+    "end_date": "2025-09-30",
+    "rate": 10.0,
+    "cost": 1750000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 5400000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m10",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 2250000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m2",
+    "role": "연구책임자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 80.0,
+    "cost": 36000000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m3",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 4050000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m4",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 3600000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m5",
+    "role": "실무자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 32.06,
+    "cost": 10100000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m6",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 2880000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 2700000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 2520000.0
+  },
+  {
+    "project_id": "p3",
+    "member_id": "m9",
+    "role": "일반참여자",
+    "start_date": "2025-04-01",
+    "end_date": "2025-09-30",
+    "rate": 10.0,
+    "cost": 1500000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m1",
+    "role": "연구책임자",
+    "start_date": "2025-06-01",
+    "end_date": "2025-12-31",
+    "rate": 25.58,
+    "cost": 10743000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m1",
+    "role": "연구책임자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-06-30",
+    "rate": 10.0,
+    "cost": 3600000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m1",
+    "role": "연구책임자",
+    "start_date": "2026-07-01",
+    "end_date": "2026-12-31",
+    "rate": 80.0,
+    "cost": 28800000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m10",
+    "role": "일반참여자",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-30",
+    "rate": 20.0,
+    "cost": 500000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m10",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2025-08-31",
+    "rate": 10.0,
+    "cost": 500000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m10",
+    "role": "일반참여자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 3000000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m2",
+    "role": "일반참여자",
+    "start_date": "2026-07-01",
+    "end_date": "2026-08-31",
+    "rate": 84.5,
+    "cost": 8450000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m2",
+    "role": "일반참여자",
+    "start_date": "2026-09-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 2000000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m3",
+    "role": "일반참여자",
+    "start_date": "2026-07-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 2700000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m4",
+    "role": "실무자",
+    "start_date": "2025-06-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 7600000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m5",
+    "role": "실무자",
+    "start_date": "2025-06-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 2450000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m5",
+    "role": "실무자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "rate": 10.5,
+    "cost": 4410000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m6",
+    "role": "일반참여자",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-30",
+    "rate": 10.0,
+    "cost": 320000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m6",
+    "role": "일반참여자",
+    "start_date": "2026-04-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 2880000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 3000000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-30",
+    "rate": 10.43,
+    "cost": 292000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2025-08-31",
+    "rate": 40.0,
+    "cost": 2240000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 3360000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m9",
+    "role": "일반참여자",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-30",
+    "rate": 70.0,
+    "cost": 1750000.0
+  },
+  {
+    "project_id": "p4",
+    "member_id": "m9",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2025-08-31",
+    "rate": 60.0,
+    "cost": 3000000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2025-12-31",
+    "rate": 44.42,
+    "cost": 15990000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-02-28",
+    "rate": 20.07,
+    "cost": 2408000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31",
+    "rate": 10.03,
+    "cost": 602000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m10",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2026-03-31",
+    "rate": 10.0,
+    "cost": 2250000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m2",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2025-08-31",
+    "rate": 10.0,
+    "cost": 1000000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m2",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31",
+    "rate": 10.0,
+    "cost": 500000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m3",
+    "role": "연구책임자",
+    "start_date": "2025-07-01",
+    "end_date": "2026-03-31",
+    "rate": 50.0,
+    "cost": 20250000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m4",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31",
+    "rate": 10.0,
+    "cost": 400000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2026-03-31",
+    "rate": 10.0,
+    "cost": 3150000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m6",
+    "role": "실무자",
+    "start_date": "2025-07-01",
+    "end_date": "2025-12-31",
+    "rate": 40.0,
+    "cost": 7680000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m6",
+    "role": "실무자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-03-31",
+    "rate": 50.0,
+    "cost": 4800000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2026-03-31",
+    "rate": 10.0,
+    "cost": 2700000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2026-03-31",
+    "rate": 10.0,
+    "cost": 2520000.0
+  },
+  {
+    "project_id": "p5",
+    "member_id": "m9",
+    "role": "일반참여자",
+    "start_date": "2025-07-01",
+    "end_date": "2025-09-30",
+    "rate": 10.0,
+    "cost": 750000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31",
+    "rate": 40.87,
+    "cost": 2452000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2026-04-01",
+    "end_date": "2026-06-30",
+    "rate": 26.43,
+    "cost": 4758000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m1",
+    "role": "일반참여자",
+    "start_date": "2026-07-01",
+    "end_date": "2026-08-31",
+    "rate": 10.0,
+    "cost": 1200000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m10",
+    "role": "일반참여자",
+    "start_date": "2025-09-01",
+    "end_date": "2026-08-31",
+    "rate": 10.0,
+    "cost": 3000000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m2",
+    "role": "연구책임자",
+    "start_date": "2025-09-01",
+    "end_date": "2026-08-31",
+    "rate": 10.0,
+    "cost": 6000000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m3",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31",
+    "rate": 10.0,
+    "cost": 450000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m3",
+    "role": "일반참여자",
+    "start_date": "2026-07-01",
+    "end_date": "2026-08-31",
+    "rate": 10.0,
+    "cost": 900000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m4",
+    "role": "일반참여자",
+    "start_date": "2026-07-01",
+    "end_date": "2026-08-31",
+    "rate": 10.0,
+    "cost": 800000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-08-31",
+    "rate": 10.0,
+    "cost": 2800000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m6",
+    "role": "일반참여자",
+    "start_date": "2026-04-01",
+    "end_date": "2026-08-31",
+    "rate": 10.0,
+    "cost": 1600000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m7",
+    "role": "실무자",
+    "start_date": "2025-09-01",
+    "end_date": "2025-12-31",
+    "rate": 10.0,
+    "cost": 1200000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m7",
+    "role": "실무자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-08-31",
+    "rate": 70.0,
+    "cost": 16800000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2025-09-01",
+    "end_date": "2025-12-31",
+    "rate": 60.0,
+    "cost": 6720000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-08-31",
+    "rate": 10.0,
+    "cost": 2240000.0
+  },
+  {
+    "project_id": "p6",
+    "member_id": "m9",
+    "role": "일반참여자",
+    "start_date": "2025-09-01",
+    "end_date": "2025-09-30",
+    "rate": 60.0,
+    "cost": 1500000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m1",
+    "role": "연구책임자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 7200000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m10",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 2500000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m2",
+    "role": "일반참여자",
+    "start_date": "2026-09-01",
+    "end_date": "2026-12-31",
+    "rate": 90.0,
+    "cost": 18000000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m3",
+    "role": "실무자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-06-30",
+    "rate": 10.0,
+    "cost": 2700000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m3",
+    "role": "실무자",
+    "start_date": "2026-07-01",
+    "end_date": "2026-12-31",
+    "rate": 60.0,
+    "cost": 16200000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m4",
+    "role": "실무자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 4800000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31",
+    "rate": 59.49,
+    "cost": 2082000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2026-04-01",
+    "end_date": "2026-06-30",
+    "rate": 69.5,
+    "cost": 7297000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2026-07-01",
+    "end_date": "2026-08-31",
+    "rate": 79.5,
+    "cost": 5565000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m5",
+    "role": "일반참여자",
+    "start_date": "2026-09-01",
+    "end_date": "2026-12-31",
+    "rate": 89.5,
+    "cost": 12530000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m6",
+    "role": "일반참여자",
+    "start_date": "2026-04-01",
+    "end_date": "2026-06-30",
+    "rate": 22.35,
+    "cost": 2146000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m6",
+    "role": "일반참여자",
+    "start_date": "2026-07-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 1920000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m7",
+    "role": "일반참여자",
+    "start_date": "2026-04-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 2700000.0
+  },
+  {
+    "project_id": "p7",
+    "member_id": "m8",
+    "role": "일반참여자",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "rate": 10.0,
+    "cost": 3360000.0
+  }
+]

@@ -1,0 +1,16 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local config (secrets/환경별 값) — AI-INSTRUCTIONS 2-1
+.env
+
+# 개발용 로컬 DB (추적 불필요 — seed로 재생성)
+*.db
