@@ -22,6 +22,7 @@ from app.schemas.override import OverrideIn, OverrideOut
 from app.services import calc
 from app.services.stats import compute_member_stats
 from app.services.budget import compute_budget_diagnostics
+from app.services.validate import audit_distribution
 from app.services.distribute import (
     auto_distribute,
     MemberData,
@@ -184,6 +185,9 @@ def run_distribute(db: Session = Depends(get_db)):
     results = auto_distribute(project_data_list, member_data_list)
     _apply_overrides(results, members, projects, db)  # 수동 조정값 재적용 (F12)
 
+    # 독립 검증(#7) — 수동 조정까지 반영된 '최종' 결과를 별도 코드로 재검사한다.
+    violations = audit_distribution(results, member_data_list, project_data_list, settings.base_date)
+
     db.query(Participation).delete()
     for r in results:
         db.add(
@@ -203,6 +207,7 @@ def run_distribute(db: Session = Depends(get_db)):
     return DistributeResult(
         participations=[_enrich(r, members, projects) for r in results],
         warnings=_forced_warnings(project_data_list, members, results),
+        violations=violations,
     )
 
 
@@ -251,6 +256,18 @@ def member_stats(db: Session = Depends(get_db)):
 
     stats = compute_member_stats(members, rows, projects, settings.base_date)
     return [MemberStatOut(**asdict(s)) for s in stats]
+
+
+@router.get("/audit", response_model=list[str])
+def audit_saved(db: Session = Depends(get_db)):
+    """저장된 배분 결과에 대한 독립 규정 검증(#7) — 위반 목록 반환 (빈 배열 = 전 규칙 통과)."""
+    members = db.query(Member).all()
+    projects = db.query(Project).all()
+    rows = db.query(Participation).all()
+
+    member_data_list = [_member_data(m) for m in members]
+    project_data_list = [_project_data(p, db) for p in projects]
+    return audit_distribution(rows, member_data_list, project_data_list, settings.base_date)
 
 
 @router.get("/budget-status", response_model=list[BudgetDiagOut])

@@ -152,7 +152,9 @@ export const importProjectsCSV = (file: File) => uploadCsv("/projects/import-csv
 export interface DistributeResult {
   participations: Participation[];
   warnings: string[];  // 강제 참여 실패 등 안내 (#4)
+  violations: string[];  // 독립 검증기가 찾은 규정 위반 (#7)
 }
+export const getAudit = () => req<string[]>("/participations/audit");
 export const runDistribute = () =>
   req<DistributeResult>("/participations/distribute", { method: "POST" });
 export const getParticipations = () => req<Participation[]>("/participations/");

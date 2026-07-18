@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import date
+from math import floor
 
 from app.config import settings
 from app.ids import new_id
@@ -418,7 +419,13 @@ def _fill_year(
 
         budget_additional = (remain / (member.salary * mon)) * 100
         additional_rate = min(max_additional, budget_additional)
-        additional_rate_floored = round_down_to_unit(additional_rate * salary_per_pct) / salary_per_pct
+
+        # 표시 참여율을 소수 2자리로 '내림' 확정한 뒤, 인건비는 확정된 참여율 기준으로 계산한다.
+        #   이전에는 반올림 전 rate로 인건비를 계산해 '저장된 참여율 × 급여'보다 큰 금액이
+        #   계상될 수 있었다(최대 ~1천원) — 독립 검증기(#7)가 발견한 정합성 결함.
+        #   내림이므로 월 참여율 상한도 절대 넘지 않는다.
+        new_rate = floor((r.rate + additional_rate) * 100 + 1e-9) / 100
+        additional_rate_floored = new_rate - r.rate
         if additional_rate_floored <= 0:
             continue
 
@@ -426,7 +433,6 @@ def _fill_year(
         if additional_cost <= 0 or additional_cost > remain:
             continue
 
-        new_rate = round(r.rate + additional_rate_floored, 2)
         alloc = next(
             (a for a in member_allocs[r.member_id] if a.project_id == proj.id and a.start_date == r.start_date), None
         )

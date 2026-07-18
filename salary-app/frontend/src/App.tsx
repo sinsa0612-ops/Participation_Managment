@@ -39,6 +39,7 @@ export default function App() {
   const [budgetStatus, setBudgetStatus] = useState<BudgetStatus[]>([]);
   const [overrides, setOverrides] = useState<Override[]>([]);
   const [distWarnings, setDistWarnings] = useState<string[]>([]);
+  const [distViolations, setDistViolations] = useState<string[]>([]);  // 독립 검증기 위반 (#7)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -165,7 +166,7 @@ export default function App() {
   /* ── 사업 CRUD ── */
   const openAddProj = () => { setProjF(defaultProjForm()); setEditProjId(null); setShowProj(true); };
   const openEditProj = (p: Project) => {
-    setProjF({ name: p.name, start_date: p.start_date, end_date: p.end_date, year_budgets: { ...p.year_budgets }, required_members: { ...p.required_members, staff: [...p.required_members.staff] }, member_constraints: { ...p.member_constraints }, member_months: {} });
+    setProjF({ name: p.name, start_date: p.start_date, end_date: p.end_date, year_budgets: { ...p.year_budgets }, required_members: { ...p.required_members, staff: [...p.required_members.staff] }, member_constraints: { ...p.member_constraints }, member_months: {}, org_role: p.org_role ?? "주관", funding_source: p.funding_source ?? "정부수탁" });
     setEditProjId(p.id); setShowProj(true);
   };
   const saveProj = async () => {
@@ -196,6 +197,7 @@ export default function App() {
     const result = await runDistribute();
     setParticipations(result.participations);
     setDistWarnings(result.warnings);
+    setDistViolations(result.violations ?? []);
     const [s, ov, bs] = await Promise.all([getMemberStats(), getOverrides(), getBudgetStatus()]);
     setStats(s); setOverrides(ov); setBudgetStatus(bs);
   };
@@ -264,6 +266,19 @@ export default function App() {
             )}
           </div>
           <button onClick={() => setCsvResult(null)} style={{ background: "none", border: "none", cursor: "pointer", color: "#888", fontSize: 16, lineHeight: 1, flexShrink: 0 }}>✕</button>
+        </div>
+      )}
+
+      {/* ── 규정 위반 배너 (#7) — 독립 검증기가 최종 결과에서 찾은 위반 ── */}
+      {distViolations.length > 0 && (
+        <div style={{ flexShrink: 0, background: "#ffebee", borderBottom: "1px solid #ffcdd2", padding: "8px 24px", display: "flex", alignItems: "flex-start", gap: 10 }}>
+          <div style={{ flex: 1 }}>
+            <span style={{ fontWeight: 700, fontSize: 13, color: "#c62828" }}>🚨 규정 위반 검출 — {distViolations.length}건 (독립 검증)</span>
+            <ul style={{ margin: "4px 0 0", paddingLeft: 18, fontSize: 12, color: "#b71c1c" }}>
+              {distViolations.map((v, i) => <li key={i}>{v}</li>)}
+            </ul>
+          </div>
+          <button onClick={() => setDistViolations([])} style={{ background: "none", border: "none", cursor: "pointer", color: "#888", fontSize: 16, lineHeight: 1, flexShrink: 0 }}>✕</button>
         </div>
       )}
 

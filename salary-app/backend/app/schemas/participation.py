@@ -49,3 +49,4 @@ class BudgetDiagOut(BaseModel):
 class DistributeResult(BaseModel):
     participations: list[ParticipationOut]
     warnings: list[str] = []  # 강제 참여시켰으나 예산·상한으로 배정 못한 (사업, 연구원) 경고 (#4)
+    violations: list[str] = []  # 독립 검증기(validate.py)가 최종 결과에서 찾은 규정 위반 (#7)
