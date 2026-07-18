@@ -51,6 +51,12 @@ class Settings(BaseSettings):
     # (과거에는 코드에 2026-05-18로 하드코딩되어 시간이 지날수록 오작동했음 — F1)
     base_date: date = date.today()
 
+    # 인건비계상률 월 상한(%) — 「국가연구개발사업 연구개발비 사용 기준」(#6)
+    # 정부수탁(국가과제) 합산은 100%를 넘을 수 없고, 인건비 미확보 비영리기관은
+    # 기본사업을 포함한 전체 합산을 130%까지 계상할 수 있다. .env로 조정 가능.
+    nat_rate_cap: float = 100.0
+    total_rate_cap: float = 130.0
+
     @property
     def frontend_dir(self) -> Path:
         """서빙할 프론트엔드 빌드(dist) 경로. 패키징 시 _MEIPASS에 번들된 frontend_dist를 가리킨다."""

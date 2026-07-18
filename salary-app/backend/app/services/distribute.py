@@ -27,6 +27,8 @@ from app.services.calc import (
 MIN_PARTICIPATION_RATE = 10  # 배정 시 최소 참여율(%)
 COUNTABLE_MIN_MONTHS = 6  # 동시참여 카운트에 포함되는 사업의 최소 잔여 개월
 DIRECTOR_RANK = "단장"  # 동시 참여 사업수 상한을 단기 사업까지 포함해 하드 강제하는 직급
+MAX_CHIEF_PROJECTS = 3  # '주관 사업 연구책임자'로서 동시 수행 상한 — 3책(#5, 혁신법 시행령 제64조)
+NAT_FUNDING = "정부수탁"  # 국가과제 재원 — 합산 월 100% 상한 대상(#6)
 
 
 # ──────────────────────────────────────────
@@ -96,6 +98,8 @@ class ProjectData:
     member_months: dict[str, list[str]] = field(default_factory=dict)  # {member_id: ["YYYY-MM", ...]}
     sort_order: int = 0  # 예산 소진 우선순위 — 작을수록 먼저 인력 확보(#2)
     excluded_members: list[str] = field(default_factory=list)  # 이 사업에서 배제할 연구원(#3)
+    org_role: str = "주관"  # 주관 | 참여 — 주관 사업 연구책임자만 3책 카운트(#5)
+    funding_source: str = NAT_FUNDING  # 정부수탁 | 기본사업 — 재원별 참여율 상한(#6)
 
 
 @dataclass
@@ -156,13 +160,66 @@ def _concurrent_rate_at(
     member_id: str,
     month_idx: int,
     current_project_id: str,
+    only_project_ids: set[str] | None = None,
 ) -> float:
-    """특정 월의 국비 참여율 합계 (현재 사업 제외)."""
+    """특정 월의 참여율 합계 (현재 사업 제외). only_project_ids로 재원별(정부수탁만 등) 합산 가능(#6)."""
     return sum(
         a.rate
         for a in member_allocs[member_id]
-        if a.project_id != current_project_id and _to_month_idx(a.start_date) <= month_idx <= _to_month_idx(a.end_date)
+        if a.project_id != current_project_id
+        and (only_project_ids is None or a.project_id in only_project_ids)
+        and _to_month_idx(a.start_date) <= month_idx <= _to_month_idx(a.end_date)
     )
+
+
+def _chief_projects_at(
+    member_allocs: dict[str, list[AllocationRecord]],
+    projects: list[ProjectData],
+    member_id: str,
+    month_idx: int,
+    current_project_id: str,
+    today: date,
+    member_rank: str = "",
+) -> int:
+    """특정 월에 '주관 사업의 연구책임자'로 동시 수행 중인 사업 수 (현재 사업 제외) — 3책(#5).
+
+    참여기관(org_role="참여") 사업의 책임자는 공동연구책임자에 해당해 카운트하지 않는다.
+    과제 수 산정 제외 규칙(잔여 6개월 미만·단장 예외)은 5공 카운트와 동일하게 공유한다.
+    """
+    seen: set[str] = set()
+    for a in member_allocs[member_id]:
+        if a.project_id == current_project_id or a.project_id in seen:
+            continue
+        if not (_to_month_idx(a.start_date) <= month_idx <= _to_month_idx(a.end_date)):
+            continue
+        proj = next((p for p in projects if p.id == a.project_id), None)
+        if not proj or proj.org_role != "주관" or proj.required_chief != member_id:
+            continue
+        if counts_toward_concurrency(member_rank, proj.end_date, today):
+            seen.add(a.project_id)
+    return len(seen)
+
+
+def _month_avail(
+    member: MemberData,
+    proj: ProjectData,
+    month_idx: int,
+    member_allocs: dict[str, list[AllocationRecord]],
+    nat_ids: set[str],
+) -> float:
+    """이 (사업, 연구원, 월)에 추가 계상 가능한 참여율 여유 (현재 사업 제외, 재원별 상한 반영, #6).
+
+    - 전체(기본사업 포함) 합산 ≤ settings.total_rate_cap (비영리 130% 특례)
+    - 정부수탁 사업이면 추가로: 정부수탁 합산 ≤ min(개인 국비 상한 max_rate, settings.nat_rate_cap)
+    member.max_rate는 '국비 참여율 상한'이므로 기본사업에는 적용하지 않는다.
+    사업별 개인 상한(member_constraints)은 호출부에서 별도로 min 조합한다.
+    """
+    used_total = _concurrent_rate_at(member_allocs, member.id, month_idx, proj.id)
+    avail = settings.total_rate_cap - used_total
+    if proj.funding_source == NAT_FUNDING:
+        used_nat = _concurrent_rate_at(member_allocs, member.id, month_idx, proj.id, nat_ids)
+        avail = min(avail, min(member.max_rate, settings.nat_rate_cap) - used_nat)
+    return avail
 
 
 # ──────────────────────────────────────────
@@ -223,6 +280,7 @@ def _assign_segment(
     proj_year_remain: dict[tuple[str, int], float],
     today: date,
     results: list[ParticipationResult],
+    nat_ids: set[str],
 ) -> bool:
     """(사업, 연구원, 연도)에서 member가 참여 가능한 '최대 연속 가용 구간'마다 세그먼트를 10%로 배정.
 
@@ -238,7 +296,8 @@ def _assign_segment(
     base_start, base_end = bounds
 
     constraint_rate = proj.member_constraints.get(member.id)
-    member_max_rate = min(constraint_rate, member.max_rate) if constraint_rate is not None else member.max_rate
+    # 이 배정이 '주관 사업의 연구책임자' 자리인가 — 그렇다면 3책 게이트 적용(#5)
+    is_lead_chief = proj.org_role == "주관" and member.id == proj.required_chief
 
     # 추가 가능한 달들을 '가용 여유가 같은' 연속 구간(window)으로 묶는다.
     #   단순 가용/불가뿐 아니라 '여유 참여율'이 바뀌는 지점에서도 끊는다 — 한 세그먼트는 단일 참여율이라,
@@ -248,9 +307,14 @@ def _assign_segment(
     run_avail: float | None = None
     for mi in range(base_start, base_end + 1):
         cnt = _countable_projects_at(member_allocs, projects, member.id, mi, proj.id, today, member.rank)
-        used_rate = _concurrent_rate_at(member_allocs, member.id, mi, proj.id)
-        avail = min(member_max_rate, member.max_rate - used_rate)
-        addable = cnt < member.max_projects and avail >= MIN_PARTICIPATION_RATE
+        avail = _month_avail(member, proj, mi, member_allocs, nat_ids)
+        if constraint_rate is not None:
+            avail = min(avail, constraint_rate)
+        chief_ok = not is_lead_chief or (
+            _chief_projects_at(member_allocs, projects, member.id, mi, proj.id, today, member.rank)
+            < MAX_CHIEF_PROJECTS
+        )
+        addable = cnt < member.max_projects and chief_ok and avail >= MIN_PARTICIPATION_RATE
         avail_key = round(avail, 2) if addable else None
         if avail_key != run_avail:
             if run_start is not None:
@@ -306,6 +370,7 @@ def _fill_year(
     member_allocs: dict[str, list[AllocationRecord]],
     proj_year_remain: dict[tuple[str, int], float],
     results: list[ParticipationResult],
+    nat_ids: set[str],
 ) -> None:
     """(사업, 연도) 한 연도의 잔액을 그 연도 세그먼트들의 참여율을 올려 소진한다.
 
@@ -334,13 +399,18 @@ def _fill_year(
             continue
 
         constraint_rate = proj.member_constraints.get(r.member_id)
-        member_max_rate = min(constraint_rate, member.max_rate) if constraint_rate is not None else member.max_rate
+        # 재원별 개인 상한(#6): 정부수탁은 국비 상한(max_rate), 기본사업은 전체 상한만 적용
+        personal_cap = (
+            min(member.max_rate, settings.nat_rate_cap)
+            if proj.funding_source == NAT_FUNDING
+            else settings.total_rate_cap
+        )
+        member_max_rate = min(constraint_rate, personal_cap) if constraint_rate is not None else personal_cap
 
-        # 월별 동시참여 여유 = min(개인 상한, max_rate − 그 달 타사업 참여율 합)
+        # 월별 동시참여 여유 = min(개인·재원 상한, 그 달의 재원별 잔여 여유)
         min_avail_rate = member_max_rate
         for mi in range(s_mi, e_mi + 1):
-            used_rate = _concurrent_rate_at(member_allocs, r.member_id, mi, proj.id)
-            min_avail_rate = min(min_avail_rate, min(member_max_rate, member.max_rate - used_rate))
+            min_avail_rate = min(min_avail_rate, _month_avail(member, proj, mi, member_allocs, nat_ids))
 
         max_additional = min_avail_rate - r.rate
         if max_additional <= 0:
@@ -385,6 +455,9 @@ def auto_distribute(
     member_allocs: dict[str, list[AllocationRecord]] = {m.id: [] for m in members}
     member_map = {m.id: m for m in members}
 
+    # 정부수탁 사업 id — 재원별 상한(국비 100% / 전체 130%) 합산용(#6)
+    nat_ids = {p.id for p in projects if p.funding_source == NAT_FUNDING}
+
     # (사업, 연도)별 잔여 예산 — 연도를 독립적으로 채운다.
     proj_year_remain: dict[tuple[str, int], float] = {}
     proj_years: dict[str, list[int]] = {}
@@ -412,7 +485,7 @@ def auto_distribute(
                     continue
                 member = member_map.get(member_id)
                 if member and _assign_segment(
-                    proj, member, year, member_allocs, projects, proj_year_remain, today, results
+                    proj, member, year, member_allocs, projects, proj_year_remain, today, results, nat_ids
                 ):
                     here.add(member_id)
 
@@ -425,7 +498,7 @@ def auto_distribute(
                     continue
                 member = member_map.get(member_id)
                 if member and _assign_segment(
-                    proj, member, year, member_allocs, projects, proj_year_remain, today, results
+                    proj, member, year, member_allocs, projects, proj_year_remain, today, results, nat_ids
                 ):
                     here.add(member_id)
 
@@ -443,10 +516,10 @@ def auto_distribute(
                     continue
                 member = member_map.get(member_id)
                 if member and _assign_segment(
-                    proj, member, year, member_allocs, projects, proj_year_remain, today, results
+                    proj, member, year, member_allocs, projects, proj_year_remain, today, results, nat_ids
                 ):
                     here.add(member_id)
-            _fill_year(proj, year, member_map, member_allocs, proj_year_remain, results)
+            _fill_year(proj, year, member_map, member_allocs, proj_year_remain, results, nat_ids)
 
     return _merge_adjacent_segments(results)
 

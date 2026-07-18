@@ -24,6 +24,7 @@ const defaultMemForm = (): Omit<Member, "id"> => ({ name: "", employ_type: "정�
 const defaultProjForm = (): Omit<Project, "id"> => ({
   name: "", start_date: "", end_date: "",
   year_budgets: {}, required_members: { chief: null, staff: [] }, member_constraints: {}, member_months: {},
+  org_role: "주관", funding_source: "정부수탁",
 });
 
 const TABS = ["👥 연구원", "📁 사업", "📊 총괄표", "📅 월별 참여율", "📋 배분결과", "🔍 참여현황"];

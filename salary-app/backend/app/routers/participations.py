@@ -131,6 +131,8 @@ def _project_data(p: Project, db: Session) -> ProjectData:
         member_months=member_months,
         sort_order=p.sort_order,
         excluded_members=excluded,
+        org_role=p.org_role,
+        funding_source=p.funding_source,
     )
 
 

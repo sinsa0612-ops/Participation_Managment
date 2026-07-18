@@ -4,6 +4,8 @@ const BASE = "";
 export type EmployType = "정규직" | "전문직" | "위촉직";
 export type Rank = "단장" | "센터장" | "팀장" | "연구원";
 export type Role = "연구책임자" | "실무자" | "일반참여자";
+export type OrgRole = "주관" | "참여";  // 주관/참여기관 구분(#5) — 주관 사업 책임자만 3책 카운트
+export type FundingSource = "정부수탁" | "기본사업";  // 재원 구분(#6) — 국비 100% / 전체 130% 상한
 
 export interface Member {
   id: string;
@@ -39,6 +41,8 @@ export interface Project {
   member_months: Record<string, string[]>;  // { memberId: ["YYYY-MM", ...] }
   sort_order?: number;  // 예산 소진 우선순위 (#2)
   excluded_members?: string[];  // 이 사업에서 배제할 연구원 (#3)
+  org_role: OrgRole;  // 주관/참여기관 (#5)
+  funding_source: FundingSource;  // 정부수탁/기본사업 (#6)
 }
 
 export interface Participation {

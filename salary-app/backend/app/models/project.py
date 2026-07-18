@@ -10,6 +10,11 @@ class Project(Base):
     start_date = Column(String, nullable=False)  # YYYY-MM-DD
     end_date = Column(String, nullable=False)  # YYYY-MM-DD
     sort_order = Column(Integer, nullable=False, default=0, server_default="0")  # 예산 소진 우선순위(#2)
+    # 주관/참여 구분(#5) — 주관 사업의 연구책임자만 3책(동시 3개) 카운트 대상.
+    # 참여기관으로 수행하는 사업의 책임자는 공동연구책임자라 3책에서 제외(혁신법 시행령 제64조).
+    org_role = Column(String, nullable=False, default="주관", server_default="주관")  # 주관 | 참여
+    # 재원 구분(#6) — 정부수탁 합산은 월 100% 상한, 기본사업 포함 전체는 130% 특례(비영리).
+    funding_source = Column(String, nullable=False, default="정부수탁", server_default="정부수탁")  # 정부수탁 | 기본사업
 
 
 class ProjectBudget(Base):

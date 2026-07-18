@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { Member, Project } from "../api";
+import type { FundingSource, Member, OrgRole, Project } from "../api";
 import { Modal, SaveCancel } from "../ui/Modal";
 import { lbl, inp } from "../ui/styles";
 
@@ -36,6 +36,20 @@ export function ProjectFormModal({
         <div>
           <label style={lbl}>종료일</label>
           <input type="date" style={inp()} value={form.end_date} onChange={e => setForm(f => ({ ...f, end_date: e.target.value, year_budgets: {} }))} />
+        </div>
+        <div>
+          <label style={lbl}>기관 역할</label>
+          <select style={inp()} value={form.org_role} onChange={e => setForm(f => ({ ...f, org_role: e.target.value as OrgRole }))}>
+            <option value="주관">주관기관 (책임자 3책 카운트)</option>
+            <option value="참여">참여기관 (3책 제외)</option>
+          </select>
+        </div>
+        <div>
+          <label style={lbl}>재원 구분</label>
+          <select style={inp()} value={form.funding_source} onChange={e => setForm(f => ({ ...f, funding_source: e.target.value as FundingSource }))}>
+            <option value="정부수탁">정부수탁 (합산 100% 상한)</option>
+            <option value="기본사업">기본사업 (전체 130%까지)</option>
+          </select>
         </div>
       </div>
       {projYears.length > 0 && (

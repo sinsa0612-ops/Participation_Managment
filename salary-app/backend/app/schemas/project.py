@@ -4,6 +4,8 @@ from typing import Literal
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 EmployType = Literal["정규직", "전문직", "위촉직"]
+OrgRole = Literal["주관", "참여"]  # 주관/참여기관 구분(#5) — 3책 카운트 대상 여부
+FundingSource = Literal["정부수탁", "기본사업"]  # 재원 구분(#6) — 참여율 상한 100/130
 
 
 class RequiredMembers(BaseModel):
@@ -22,6 +24,8 @@ class ProjectBase(BaseModel):
     year_budgets: dict[str, float] = {}  # { "2025": 125000000.0, ... }
     required_members: RequiredMembers = RequiredMembers()
     member_constraints: dict[str, MemberConstraint] = {}
+    org_role: OrgRole = "주관"
+    funding_source: FundingSource = "정부수탁"
 
     @field_validator("start_date", "end_date")
     @classmethod

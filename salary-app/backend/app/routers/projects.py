@@ -65,6 +65,8 @@ def _build_out(p: Project, db: Session) -> ProjectOut:
         member_months=member_months,
         sort_order=p.sort_order,
         excluded_members=excluded,
+        org_role=p.org_role,
+        funding_source=p.funding_source,
     )
 
 
@@ -105,6 +107,8 @@ def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
         start_date=body.start_date,
         end_date=body.end_date,
         sort_order=(max_order or 0) + 1,
+        org_role=body.org_role,
+        funding_source=body.funding_source,
     )
     db.add(p)
     db.flush()
@@ -140,6 +144,8 @@ def update_project(project_id: str, body: ProjectUpdate, db: Session = Depends(g
     p.name = body.name
     p.start_date = body.start_date
     p.end_date = body.end_date
+    p.org_role = body.org_role
+    p.funding_source = body.funding_source
     _save_relations(project_id, body, db)
     db.commit()
     return _build_out(p, db)

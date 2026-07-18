@@ -38,8 +38,11 @@ export function MemberFormModal({
           </select>
         </div>
         <div style={{ gridColumn: "1/-1" }}>
-          <label style={lbl}>월 인건비 (원) *</label>
+          <label style={lbl}>월 급여총액 (원) *</label>
           <input type="number" style={inp()} value={form.salary || ""} onChange={e => setForm(f => ({ ...f, salary: Number(e.target.value) }))} placeholder="3000000" />
+          <div style={{ fontSize: 11, color: "#888", marginTop: 3 }}>
+            4대보험·퇴직급여충당금의 본인 및 기관 부담분을 <b>포함</b>한 월 급여총액 (인건비 계상 기준)
+          </div>
         </div>
         <div>
           <label style={lbl}>국비 참여율 상한 (%)</label>
